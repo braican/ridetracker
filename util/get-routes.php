@@ -13,7 +13,7 @@
 			$route_id = $row['route_id'];	 ?>
 
 			<div class="clearfix project">
-				<a href="rides.php?ride=<?php echo $route_id ?>"><?php echo $name ?></a>
+				<a href="rides.php?route=<?php echo $route_id ?>"><?php echo $name ?></a>
 			</div>
 <?php
 		}

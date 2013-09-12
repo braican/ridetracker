@@ -1,9 +1,9 @@
 <?php include('inc/header.html'); ?>
 
-	<h1>Rides</h1>
-	<div class="ride-list refresh-this">
+	<h1>Routes</h1>
+	<div class="route-list refresh-this">
 		<?php include("util/get-routes.php"); ?>
-	</div><!-- .ride-list -->
+	</div><!-- .route-list -->
 
 	<form action="util/add-route.php" method="post" data-refresh="util/get-routes.php">
 		<input type="text" name="new_route" maxlength="70" placeholder="add route"></input>

@@ -42,6 +42,7 @@
 	};
 
 	ride.forms = function(){
+		
 		$('form').on('submit', function(event){
 			event.preventDefault();
 			var $this = $(this);
@@ -57,8 +58,8 @@
 					$this.find('input[type=text]').val('');
 				}
 			});
-			
 		});
+
 	}
 
 
