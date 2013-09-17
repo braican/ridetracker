@@ -18,9 +18,6 @@
 			<a href="index.php">&#10094;&#10094; Routes</a>	
 			<h1><?php echo $title; ?></h1>
 		</div>
-	</header>
-	
-	<div class="main-content">
 		<div class="rides-headers">
 			<div class="container">
 				<div class="ride">
@@ -30,6 +27,10 @@
 				</div>
 			</div>
 		</div>
+	</header>
+	
+	<div class="main-content">
+
 		<section class="ride-list refresh-this clearfix container">
 			<?php include("util/get-rides.php"); ?>
 		</section><!-- .ride-list -->

@@ -61,10 +61,10 @@ h1{
 
 a{
 	text-decoration: none;
-	color: #1A6DD1;
+	color: #0053b7;
 }
 a:hover{
-	color: #0053b7;
+	color: #1A6DD1;
 }
 
 /* forms */
@@ -125,7 +125,7 @@ input[type=submit]:hover{
 
 /* header */
 .page-header{
-	background: #ffbf00;
+	background: #c94500;
 	height: 60px;
 	position: fixed;
 	top: 0;
@@ -134,17 +134,22 @@ input[type=submit]:hover{
 .page-header h1{
 	float: right;
 	line-height: 60px;
+	color: #fff;
 }
 .page-header a{
 	float: left;
 	line-height: 60px;
 	font-weight: bold;
 	text-transform: uppercase;
+	color: #7FD2FF;
+}
+.page-header a:hover{
+	color: #66B9FF;
 }
 
 /* main-content */
 .main-content{
-	margin-top: 60px;
+	margin-top: 96px;
 }
 
 /* -----------------------------------
@@ -160,6 +165,7 @@ input[type=submit]:hover{
 	background: #ddd;
 	font-weight: bold;
 	text-transform: uppercase;
+	height: 36px;
 }
 .ride{
 	padding: 10px;
