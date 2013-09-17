@@ -4,11 +4,11 @@
 	$route = $_POST['route_id'];
 	$to_from = isset($_POST['ride_to_from']) ? $_POST['ride_to_from'] : 'NULL';
 
-	echo $to_from;
+	$post_hrs = $_POST['ride_hrs'] != "" ? $_POST['ride_hrs'] : 0;
+	$post_mins = $_POST['ride_mins'] != "" ? $_POST['ride_mins'] : 0;
+	$post_secs = $_POST['ride_secs'] != "" ? $_POST['ride_secs'] : 0;
 
-	$hrs = $_POST['ride_hrs'] != "" ? $_POST['ride_hrs'] : 'NULL';
-	$mins = $_POST['ride_mins'] != "" ? $_POST['ride_mins'] : 'NULL';
-	$secs = $_POST['ride_secs'] != "" ? $_POST['ride_secs'] : 'NULL';
+	$secs = $post_secs + ($post_mins * 60) + ($post_hrs * 3600);
 
 	if($date != ""){
 		$db = dbconnect();
@@ -16,9 +16,7 @@
 							`ride_id` bigint(20) NOT NULL AUTO_INCREMENT,
 							`ride_date` date NOT NULL,
 							`route_id` bigint(20) NOT NULL,
-							`ride_hrs` tinyint,
-							`ride_mins` tinyint,
-							`ride_secs` tinyint,
+							`ride_secs` bigint,
 							`ride_to_from` tinyint(1),
 							PRIMARY KEY (`ride_id`),
 							FOREIGN KEY (route_id) REFERENCES routes(route_id)
@@ -29,11 +27,11 @@
 		$hrs = $db->real_escape_string($hrs);
 		$mins = $db->real_escape_string($mins);
 		$secs = $db->real_escape_string($secs);
-		$sql = "INSERT INTO rides(ride_date, route_id, ride_hrs, ride_mins, ride_secs, ride_to_from)
+		$sql = "INSERT INTO rides(ride_date, route_id, ride_secs, ride_to_from)
 					VALUES (
 						STR_TO_DATE('".$date."', '%Y-%m-%d'),
 						$route,
-						$hrs, $mins, $secs,
+						$secs,
 						$to_from
 				);";
 		echo $sql;

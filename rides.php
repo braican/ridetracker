@@ -13,9 +13,9 @@
 	}
 	dbclose($result, $db);
 ?>
-	
+	<a href="index.php">Back</a>	
 	<h1><?php echo $title; ?></h1>
-	<div class="ride-list refresh-this">
+	<div class="ride-list refresh-this clearfix">
 		<?php include("util/get-rides.php"); ?>
 	</div><!-- .ride-list -->
 	
