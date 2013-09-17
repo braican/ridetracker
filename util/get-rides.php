@@ -23,9 +23,11 @@
 			$secs = str_pad((($post_secs % 3600) % 60), 2, '0', STR_PAD_LEFT);
 			
 			if($row['ride_to_from'] == 0){
-				$to_from = "To";
+				$to_from = "&#8594;";
+				$to_from_class = "to";
 			} else if($row['ride_to_from'] == 1){
-				$to_from = "From";
+				$to_from = "&#8592;";
+				$to_from_class = "from";
 			} else {
 				$to_from = "";
 			}
@@ -34,7 +36,7 @@
 			<div class="clearfix ride">
 				<div class="date"><?php echo $date; ?></div>
 				<div class="time"><?php echo $hrs . ':' . $mins . ':' . $secs; ?></div>
-				<div class="to-from"><?php echo $to_from; ?></div>
+				<div class="to-from <?php echo $to_from_class; ?>"><?php echo $to_from; ?></div>
 			</div>
 <?php
 		}

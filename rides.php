@@ -13,24 +13,42 @@
 	}
 	dbclose($result, $db);
 ?>
-	<a href="index.php">Back</a>	
-	<h1><?php echo $title; ?></h1>
-	<div class="ride-list refresh-this clearfix">
-		<?php include("util/get-rides.php"); ?>
-	</div><!-- .ride-list -->
+	<header class="page-header">
+		<div class="container clearfix">
+			<a href="index.php">&#10094;&#10094; Routes</a>	
+			<h1><?php echo $title; ?></h1>
+		</div>
+	</header>
 	
-	<form action="util/add-ride.php" method="post" data-refresh="util/get-rides.php?route=<?php echo $route; ?>">
-		<input type="date" name="ride_date" value="<?php echo date('Y-m-d'); ?>"></input>
-		<label for="ride_to">To</label><input type="radio" value="0" id="ride_to" name="ride_to_from">
-		<label for="ride_from">From</label><input type="radio" value="1" id="ride_from" name="ride_to_from">
-		<fieldset>
-			<legend>time</legend>
-			<input type="number" name="ride_hrs" placeholder="hrs">
-			<input type="number" name="ride_mins" max="59" placeholder="min">
-			<input type="number" name="ride_secs" max="59" placeholder="sec">
-		</fieldset>
+	<div class="main-content">
+		<div class="rides-headers">
+			<div class="container">
+				<div class="ride">
+					<div class="date">Date</div>
+					<div class="time">Time</div>
+					<div class="to-from">To or From</div>
+				</div>
+			</div>
+		</div>
+		<section class="ride-list refresh-this clearfix container">
+			<?php include("util/get-rides.php"); ?>
+		</section><!-- .ride-list -->
 		
-		<input type="hidden" name="route_id" value="<?php echo $route; ?>">
-		<input type="submit" value="Submit"></input>
-	</form>
+		<section class="container">
+			<form action="util/add-ride.php" method="post" data-refresh="util/get-rides.php?route=<?php echo $route; ?>">
+				<input type="date" name="ride_date" value="<?php echo date('Y-m-d'); ?>"></input>
+				<label for="ride_to">To</label><input type="radio" value="0" id="ride_to" name="ride_to_from">
+				<label for="ride_from">From</label><input type="radio" value="1" id="ride_from" name="ride_to_from">
+				<fieldset>
+					<legend>time</legend>
+					<input type="number" name="ride_hrs" placeholder="hrs">
+					<input type="number" name="ride_mins" max="59" placeholder="min">
+					<input type="number" name="ride_secs" max="59" placeholder="sec">
+				</fieldset>
+				
+				<input type="hidden" name="route_id" value="<?php echo $route; ?>">
+				<input type="submit" value="Submit"></input>
+			</form>
+		</section>
+	</div><!-- .main-content -->
 <?php include('inc/footer.html'); ?>

@@ -30,6 +30,8 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
 	line-height: 1;
+	font-family: 'Lato', sans-serif;
+	background: #ededed;
 }
 ol, ul {
 	list-style: none;
@@ -48,6 +50,104 @@ table {
 }
 
 /* -----------------------------------
+ * --global
+ * ----------------------------------- */
+
+/* typography */
+h1{
+	font-size: 2em;
+	font-weight: bold;
+}
+
+a{
+	text-decoration: none;
+	color: #1A6DD1;
+}
+a:hover{
+	color: #0053b7;
+}
+
+/* forms */
+input{
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+input[type=text],
+input[type=number],
+input[type=date]{
+	padding: 8px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	border: 1px solid #ddd;
+	background-color: #f2f2f2;
+	font-size: 14px;
+	margin: 0;
+	height: 36px;
+	font-family: 'Lato', sans-serif;
+}
+input[type=submit]{
+	background-color: #0053b7;
+	border: 0;
+	height: 36px;
+	margin: 0;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	font-size: 16px;
+	color:#fff;
+	cursor: pointer;
+
+	-webkit-transition: all .2s linear;
+	-o-transition: all .2s linear;
+	-moz-transition: all .2s linear;
+	transition: all .2s linear;
+}
+input[type=submit]:hover{
+	background-color: #1A6DD1;
+
+	-webkit-transition: all .2s linear;
+	-o-transition: all .2s linear;
+	-moz-transition: all .2s linear;
+	transition: all .2s linear;
+}
+
+/* -----------------------------------
+ * --layout
+ * ----------------------------------- */
+.container{
+	width: 96%;
+	max-width: 800px;
+	margin: 0 auto;
+}
+
+/* header */
+.page-header{
+	background: #ffbf00;
+	height: 60px;
+	position: fixed;
+	top: 0;
+	width: 100%;
+}
+.page-header h1{
+	float: right;
+	line-height: 60px;
+}
+.page-header a{
+	float: left;
+	line-height: 60px;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+
+/* main-content */
+.main-content{
+	margin-top: 60px;
+}
+
+/* -----------------------------------
  * --list of routes
  * ----------------------------------- */
 
@@ -55,9 +155,43 @@ table {
 /* -----------------------------------
  * --list of rides
  * ----------------------------------- */
+
+.rides-headers{
+	background: #ddd;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+.ride{
+	padding: 10px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	font-size: 0;
+}
+.ride:nth-child(even){
+	background: #ddd;
+}
+
 .ride > div{
-	float: left;
-	width: 33%;
+	display: inline-block;
+	width: 40%;
+	font-size: 16px;
+	vertical-align: middle;
+}
+
+.ride .to-from{	
+	width: 20%;
+}
+
+.ride-list .ride .to-from{
+	font-size: 26px;
+}
+
+.ride .to{
+	color: #900;
+}
+.ride .from{
+	color: #090;
 }
 
 /* -----------------------------------
