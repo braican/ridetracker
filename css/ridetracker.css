@@ -58,6 +58,12 @@ h1{
 	font-size: 2em;
 	font-weight: bold;
 }
+h2{
+	font-size: 1.2em;
+	background: #12165a;
+	color: #fff;
+	padding: 10px;
+}
 
 a{
 	text-decoration: none;
@@ -224,8 +230,39 @@ input[type=radio]:nth-of-type(2):checked + label {
 	color: #090;
 }
 
+.the-time{
+	font-weight: 700;
+}
+
+/* stats */
+.stats{
+	margin: 20px 0;
+}
+.stats > div{
+	float: left;
+	width: 33%;
+	margin: 10px 0;
+}
+.stats .the-time{
+
+}
+
 /* -----------------------------------
  * --util
  * ----------------------------------- */
 .clearfix:before, .clearfix:after { content: " "; display: table; }
 .clearfix:after { clear: both; }
+
+
+/* -----------------------------------
+ * --media queries
+ * ----------------------------------- */
+@media only screen and (max-width: 560px){
+	.page-header{
+		position: relative;
+		height: auto;
+	}
+	.main-content{
+		margin-top: 0;
+	}
+}

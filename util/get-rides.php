@@ -64,11 +64,11 @@
 	$avg = $result->fetch_row();
 
 ?>
-	<div class="stats overall">
+	<div class="stats clearfix overall">
 		<h2>Overall (<?php echo $count[0]; ?> rides)</h2>
-		<div class="stats clearfix">best time - <?php outputTime($min[0]); ?></div>
-		<div class="stats clearfix">worst time - <?php outputTime($max[0]); ?></div>
-		<div class="stats clearfix">average time - <?php outputTime($avg[0]); ?></div>
+		<div>best time - <?php outputTime($min[0]); ?></div>
+		<div>worst time - <?php outputTime($max[0]); ?></div>
+		<div>average time - <?php outputTime($avg[0]); ?></div>
 	</div>
 <?php
 
@@ -97,11 +97,11 @@
 
 	$avg = $result->fetch_row();
 ?>
-	<div class="stats to">
+	<div class="stats clearfix to">
 		<h2>To (<?php echo $count[0]; ?> rides)</h2>
-		<div class="stats clearfix">best time - <?php outputTime($min[0]); ?></div>
-		<div class="stats clearfix">worst time - <?php outputTime($max[0]); ?></div>
-		<div class="stats clearfix">average time - <?php outputTime($avg[0]); ?></div>
+		<div>best time - <?php outputTime($min[0]); ?></div>
+		<div>worst time - <?php outputTime($max[0]); ?></div>
+		<div>average time - <?php outputTime($avg[0]); ?></div>
 	</div>
 <?php
 	// from
@@ -129,11 +129,11 @@
 
 	$avg = $result->fetch_row();
 ?>
-	<div class="stats from">
+	<div class="stats clearfix from">
 		<h2>From (<?php echo $count[0]; ?> rides)</h2>
-		<div class="stats clearfix">best time - <?php outputTime($min[0]); ?></div>
-		<div class="stats clearfix">worst time - <?php outputTime($max[0]); ?></div>
-		<div class="stats clearfix">average time - <?php outputTime($avg[0]); ?></div>
+		<div>best time - <?php outputTime($min[0]); ?></div>
+		<div>worst time - <?php outputTime($max[0]); ?></div>
+		<div>average time - <?php outputTime($avg[0]); ?></div>
 	</div>
 <?php 
 function outputTime($post_secs){
@@ -141,7 +141,7 @@ function outputTime($post_secs){
 	$hrs = str_pad(floor($post_secs / 3600), 2, '0', STR_PAD_LEFT);
 	$secs = str_pad((($post_secs % 3600) % 60), 2, '0', STR_PAD_LEFT);
 
-	echo $hrs . ':' . $mins . ':' . $secs;
+	echo '<span class="the-time">' . $hrs . ':' . $mins . ':' . $secs . '</span>';
 }
 
 dbclose($result, $db);

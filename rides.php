@@ -23,7 +23,7 @@
 				<div class="ride">
 					<div class="date">Date</div>
 					<div class="time">Time</div>
-					<div class="to-from">To or From</div>
+					<div class="to-from">To/From</div>
 				</div>
 			</div>
 		</div>
