@@ -11,8 +11,8 @@
 	while($row = $result->fetch_assoc()){
 		$title = $row['route_name'];
 	}
-	dbclose($result, $db);
 ?>
+
 	<header class="page-header">
 		<div class="container clearfix">
 			<a href="index.php">&#10094;&#10094; Routes</a>	
@@ -38,8 +38,12 @@
 		<section class="container">
 			<form action="util/add-ride.php" method="post" data-refresh="util/get-rides.php?route=<?php echo $route; ?>">
 				<input type="date" name="ride_date" value="<?php echo date('Y-m-d'); ?>"></input>
-				<label for="ride_to">To</label><input type="radio" value="0" id="ride_to" name="ride_to_from">
-				<label for="ride_from">From</label><input type="radio" value="1" id="ride_from" name="ride_to_from">
+				
+				<div>
+					<input type="radio" value="0" id="ride_to" name="ride_to_from"><label for="ride_to">To</label>
+					<input type="radio" value="1" id="ride_from" name="ride_to_from"><label for="ride_from">From</label>
+				</div>
+				
 				<fieldset>
 					<legend>time</legend>
 					<input type="number" name="ride_hrs" placeholder="hrs">
@@ -51,5 +55,7 @@
 				<input type="submit" value="Submit"></input>
 			</form>
 		</section>
+
 	</div><!-- .main-content -->
+	<?php dbclose($result, $db); ?>
 <?php include('inc/footer.html'); ?>
