@@ -55,7 +55,13 @@
 				<input type="submit" value="Submit"></input>
 			</form>
 		</section>
-
+		
+		<section class="the-charts">
+			<canvas id="canvas" height="450" width="600"></canvas>
+		</section>
 	</div><!-- .main-content -->
+
+
 	<?php dbclose($result, $db); ?>
+
 <?php include('inc/footer.html'); ?>
