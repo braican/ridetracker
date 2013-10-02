@@ -36,13 +36,11 @@
 		</section><!-- .ride-list -->
 		
 		<section class="container">
-			<form action="util/add-ride.php" method="post" data-refresh="util/get-rides.php?route=<?php echo $route; ?>">
+			<form action="util/add-ride.php" method="post" data-refresh="util/get-rides.php?route=<?php echo $route; ?>" id="add-ride-form">
 				<input type="date" name="ride_date" value="<?php echo date('Y-m-d'); ?>"></input>
 				
-				<div>
-					<input type="radio" value="0" id="ride_to" name="ride_to_from"><label for="ride_to">To</label>
-					<input type="radio" value="1" id="ride_from" name="ride_to_from"><label for="ride_from">From</label>
-				</div>
+				<input type="radio" value="0" id="ride_to" name="ride_to_from"><label for="ride_to">To</label>
+				<input type="radio" value="1" id="ride_from" name="ride_to_from"><label for="ride_from">From</label>
 				
 				<fieldset>
 					<legend>time</legend>
@@ -56,8 +54,17 @@
 			</form>
 		</section>
 		
-		<section class="the-charts">
-			<canvas id="canvas" height="450" width="600"></canvas>
+		<section class="the-charts container">
+			<h2>Graphics</h2>
+			<div>
+				<h3>To</h3>
+				<canvas id="to-canvas" height="450" width="600"></canvas>
+			</div>
+
+			<div>
+				<h3>From</h3>
+				<canvas id="from-canvas" height="450" width="600"></canvas>
+			</div>
 		</section>
 	</div><!-- .main-content -->
 

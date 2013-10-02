@@ -74,6 +74,9 @@ a:hover{
 }
 
 /* forms */
+form{
+	margin: 20px 0;
+}
 input{
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
@@ -98,7 +101,7 @@ input[type=submit]{
 	background-color: #0053b7;
 	border: 0;
 	height: 36px;
-	margin: 0;
+	margin: 10px 0;
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
 	border-radius: 5px;
@@ -245,6 +248,11 @@ input[type=radio]:nth-of-type(2):checked + label {
 }
 .stats .the-time{
 
+}
+
+/* the charts */
+.the-charts canvas{
+	
 }
 
 /* -----------------------------------

@@ -43,6 +43,66 @@
 		return results[1] || 0;
   	}
 
+  	function getTheCharts(){
+  		$.ajax({
+  			url: 'util/charts.php?route=' + getUrlParam('route'),
+  			type: 'GET',
+  			dataType: 'json',
+  			success: function(data){
+  				console.log(data);
+
+  				var chartOptions = {
+  					//Boolean - If we want to override with a hard coded scale
+  					scaleOverride : true,
+  					
+  					//** Required if scaleOverride is true **
+  					//Number - The number of steps in a hard coded scale
+  					scaleSteps : 16,
+  					//Number - The value jump in the hard coded scale
+  					scaleStepWidth : 30,
+  					//Number - The scale starting value
+  					scaleStartValue : 600,
+  					scaleFontFamily : "'Courier New'",
+  					// scaleLabel : "<%=value%>"
+  					// h = (h < 10) ? ("0" + h) : h;
+  					scaleLabel : "<%= Math.floor(value/3600) %>:<%= Math.floor((value % 3600) / 60) %>:<%= ((value%3600) % 60) < 10 ? '0'+((value%3600)%60) : ((value%3600)%60)%>"
+  				}
+
+  				// the chart -> to the place
+  				var toData = {
+  					labels : data.to_dates,
+  					datasets : [
+  						{
+  							fillColor : "rgba(188,188,188,0.5)",
+  							strokeColor : "rgba(188,188,188,1)",
+  							pointColor : "#900",
+  							pointStrokeColor : "#900",
+  							data : data.to
+  						}
+  					]
+  				};
+  				var toChart = new Chart(document.getElementById("to-canvas").getContext("2d")).Line(toData, chartOptions);
+
+  				// the chart <- from the place
+  				var fromData = {
+  					labels : data.from_dates,
+  					datasets : [
+  						{
+  							fillColor : "rgba(188,188,188,0.5)",
+  							strokeColor : "rgba(188,188,188,1)",
+  							pointColor : "#090",
+  							pointStrokeColor : "#090",
+  							data : data.from
+  						}
+  					],
+  					
+  				};
+  				var fromChart = new Chart(document.getElementById("from-canvas").getContext("2d")).Line(fromData, chartOptions);
+
+  			}
+  		});
+  	}
+
 
 	// -----------------------------------------
 	// PUBLIC
@@ -50,44 +110,9 @@
 	// Methods
 	//
 
-	// console.log(getUrlParam('route'));
+	// document ready
 	ride.init = function(){
 		
-		if($('#canvas').length > 0){
-
-			$.ajax({
-				url: 'util/charts.php?route=' + getUrlParam('route'),
-				type: 'GET',
-				dataType: 'json',
-				success: function(data){
-					console.log(data.from);
-					var lineChartData = {
-						labels : ["January","February","March","April","May"],
-						datasets : [
-							{
-								fillColor : "rgba(220,220,220,0.5)",
-								strokeColor : "rgba(220,220,220,1)",
-								pointColor : "rgba(220,220,220,1)",
-								pointStrokeColor : "#fff",
-								data : data.to
-							},
-							{
-								fillColor : "rgba(188,188,188,0.5)",
-								strokeColor : "rgba(188,188,188,1)",
-								pointColor : "rgba(188,188,188,1)",
-								pointStrokeColor : "#fff",
-								data : data.from
-							}
-						]
-						
-					}
-
-					var myLine = new Chart(document.getElementById("canvas").getContext("2d")).Line(lineChartData);
-				}
-			});
-			
-			
-		}
 
 	};
 
@@ -106,12 +131,21 @@
 					$('.ajax-message').html(data);
 					$('.refresh-this').load(refresh);
 					$this.find('input[type=text]').val('');
+					if($this.attr('id') == 'add-ride-form'){
+						getTheCharts();
+					}
 				}
 			});
 		});
 
 	}
 
+	// window load
+	ride.windowload = function(){
+		if($('.the-charts').length > 0){
+			getTheCharts();
+		}
+	}
 
 
 	// -----------------------------------------
@@ -120,6 +154,10 @@
 	$(document).ready(function() {
 		ride.init();
 		ride.forms();
+	});
+
+	$(window).load(function() {
+		ride.windowload();
 	});
 
 
