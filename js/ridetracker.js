@@ -21,7 +21,8 @@
 	//
 	// Properties
 	//
-	var privateProperty = '';
+	var listTop = $('.ride-list').position().top - 100;
+	var listBottom = $('.ride-list').position().top + $('.ride-row-container').height() - 80;
 
 
 	// -----------------------------------------
@@ -44,14 +45,23 @@
   	}
 
   	function getTheCharts(){
+  		var canvases = document.getElementsByTagName('canvas'),
+  			ww = $('.the-charts').width();;
+  		
+  		$.each(canvases, function(index, val) {
+  			 val.width = ww;
+  		});
+
   		$.ajax({
   			url: 'util/charts.php?route=' + getUrlParam('route'),
   			type: 'GET',
   			dataType: 'json',
   			success: function(data){
-  				console.log(data);
+				console.log(data);
+				var isPhone = ww < 481;
 
   				var chartOptions = {
+  					scaleShowLabels : !isPhone,
   					//Boolean - If we want to override with a hard coded scale
   					scaleOverride : true,
   					
@@ -144,6 +154,8 @@
 	ride.windowload = function(){
 		if($('.the-charts').length > 0){
 			getTheCharts();
+			// $('canvas').width($('.the-charts').width());
+
 		}
 	}
 
@@ -158,6 +170,19 @@
 
 	$(window).load(function() {
 		ride.windowload();
+	});
+
+	$(window).scroll(function(){
+		var sTop = $(window).scrollTop();
+		console.log('scrolltop = ' + sTop);
+		console.log('listTop = ' + listTop);
+		console.log('listBottom = ' + listBottom);
+		if(sTop > listTop) {
+			$('.rides-headers').addClass('out');
+		}
+		if(sTop > listBottom || sTop < listTop){
+			$('.rides-headers').removeClass('out');
+		}
 	});
 
 

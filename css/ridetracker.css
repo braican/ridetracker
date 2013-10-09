@@ -64,6 +64,12 @@ h2{
 	color: #fff;
 	padding: 10px;
 }
+h3{
+	font-size: 1em;
+	background: #45498D;
+	color: #fff;
+	padding: 10px;
+}
 
 a{
 	text-decoration: none;
@@ -147,6 +153,13 @@ input[type=radio]:nth-of-type(2):checked + label {
     color: #fff;
 }
 
+legend{
+	padding: 10px;
+	background: #12165a;
+	color: #fff;
+	display: none;
+}
+
 /* -----------------------------------
  * --layout
  * ----------------------------------- */
@@ -163,6 +176,7 @@ input[type=radio]:nth-of-type(2):checked + label {
 	position: fixed;
 	top: 0;
 	width: 100%;
+	z-index: 10;
 }
 .page-header h1{
 	float: right;
@@ -182,7 +196,7 @@ input[type=radio]:nth-of-type(2):checked + label {
 
 /* main-content */
 .main-content{
-	margin-top: 96px;
+	margin-top: 60px;
 }
 
 /* -----------------------------------
@@ -194,11 +208,34 @@ input[type=radio]:nth-of-type(2):checked + label {
  * --list of rides
  * ----------------------------------- */
 
+.title-bar{
+	position: relative;
+	z-index: 11;
+}
 .rides-headers{
 	background: #ddd;
 	font-weight: bold;
 	text-transform: uppercase;
 	height: 36px;
+	-webkit-box-shadow: 0 2px 5px rgba(0,0,0,.4);
+	-moz-box-shadow: 0 2px 5px rgba(0,0,0,.4);
+	box-shadow: 0 2px 5px rgba(0,0,0,.4);
+	position: fixed;
+	z-index: 9;
+	top: 60px;
+	width: 100%;
+	margin-top: -36px;
+	-webkit-transition: all .2s linear;
+	-o-transition: all .2s linear;
+	-moz-transition: all .2s linear;
+	transition: all .2s linear;
+}
+.rides-headers.out{
+	margin-top: 0;
+	-webkit-transition: all .2s linear;
+	-o-transition: all .2s linear;
+	-moz-transition: all .2s linear;
+	transition: all .2s linear;
 }
 .ride{
 	padding: 10px;
@@ -222,6 +259,9 @@ input[type=radio]:nth-of-type(2):checked + label {
 	width: 20%;
 }
 
+.ride-list{
+	margin-bottom: 40px;
+}
 .ride-list .ride .to-from{
 	font-size: 26px;
 }
@@ -241,18 +281,36 @@ input[type=radio]:nth-of-type(2):checked + label {
 .stats{
 	margin: 20px 0;
 }
-.stats > div{
+.the-stats > div{
 	float: left;
-	width: 33%;
-	margin: 10px 0;
+	width: 33.3333%;
+	margin: 0;
+	line-height: 1.5em;
+	background: #fff;
+	border-right: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	padding: 5px;
+	text-align: center;
+}
+.the-stats > div:first-child{
+	border-left: 1px solid #ccc;
 }
 .stats .the-time{
-
+	font-size: 1.2em;
 }
 
 /* the charts */
+.the-charts{
+	padding: 40px 0;
+}
 .the-charts canvas{
-	
+	/*width: 800px !important;*/
+}
+.the-charts > div h2{
+	margin-bottom: 20px;
 }
 
 /* -----------------------------------
@@ -272,5 +330,14 @@ input[type=radio]:nth-of-type(2):checked + label {
 	}
 	.main-content{
 		margin-top: 0;
+	}
+
+	.page-header .container > *{
+		float: none;
+	}
+
+	.the-time-fields input{
+		width: 33.33333%;
+		float: left;
 	}
 }

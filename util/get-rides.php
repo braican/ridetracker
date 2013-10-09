@@ -11,9 +11,11 @@
 			ORDER BY ride_date, ride_to_from";
 
 	$result = $db->query($sql);
-	if(!$result || mysqli_num_rows($result) == 0){
+	if(!$result || mysqli_num_rows($result) == 0) :
 		echo ('<div class="no-rides">You have no rides</div>');
-	} else {
+	else : ?>
+	<div class="ride-row-container">
+	<?php
 		while($row = $result->fetch_assoc()){
 			$date = $row['ride_date'];
 			$post_secs = $row['ride_secs'];
@@ -34,9 +36,10 @@
 				<div class="time"><?php outputTime($post_secs) ?></div>
 				<div class="to-from <?php echo $to_from_class; ?>"><?php echo $to_from; ?></div>
 			</div>
+<?php } ?>
+	</div>
 <?php
-		}
-	}
+	endif;
 	
 	// overall stats
 	$sql =	"SELECT count(*) FROM rides WHERE route_id = $route_id";
@@ -65,10 +68,12 @@
 
 ?>
 	<div class="stats clearfix overall">
-		<h2>Overall (<?php echo $count[0]; ?> rides)</h2>
-		<div>best time - <?php outputTime($min[0]); ?></div>
-		<div>worst time - <?php outputTime($max[0]); ?></div>
-		<div>average time - <?php outputTime($avg[0]); ?></div>
+		<h3>Overall (<?php echo $count[0]; ?> rides)</h3>
+		<div class="the-stats">
+			<div><div>best time</div> <div><?php outputTime($min[0]); ?></div></div>
+			<div><div>worst time</div> <div><?php outputTime($max[0]); ?></div></div>
+			<div><div>average time</div> <div><?php outputTime($avg[0]); ?></div></div>
+		</div>
 	</div>
 <?php
 
@@ -98,10 +103,12 @@
 	$avg = $result->fetch_row();
 ?>
 	<div class="stats clearfix to">
-		<h2>To (<?php echo $count[0]; ?> rides)</h2>
-		<div>best time - <?php outputTime($min[0]); ?></div>
-		<div>worst time - <?php outputTime($max[0]); ?></div>
-		<div>average time - <?php outputTime($avg[0]); ?></div>
+		<h3>To (<?php echo $count[0]; ?> rides)</h3>
+		<div class="the-stats">
+			<div><div>best time</div> <div><?php outputTime($min[0]); ?></div></div>
+			<div><div>worst time</div> <div><?php outputTime($max[0]); ?></div></div>
+			<div><div>average time</div> <div><?php outputTime($avg[0]); ?></div></div>
+		</div>
 	</div>
 <?php
 	// from
@@ -130,10 +137,12 @@
 	$avg = $result->fetch_row();
 ?>
 	<div class="stats clearfix from">
-		<h2>From (<?php echo $count[0]; ?> rides)</h2>
-		<div>best time - <?php outputTime($min[0]); ?></div>
-		<div>worst time - <?php outputTime($max[0]); ?></div>
-		<div>average time - <?php outputTime($avg[0]); ?></div>
+		<h3>From (<?php echo $count[0]; ?> rides)</h3>
+		<div class="the-stats">
+			<div><div>best time</div> <div><?php outputTime($min[0]); ?></div></div>
+			<div><div>worst time</div> <div><?php outputTime($max[0]); ?></div></div>
+			<div><div>average time</div> <div><?php outputTime($avg[0]); ?></div></div>
+		</div>
 	</div>
 <?php 
 function outputTime($post_secs){
