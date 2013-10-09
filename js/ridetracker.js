@@ -21,8 +21,12 @@
 	//
 	// Properties
 	//
-	var listTop = $('.ride-list').position().top - 100;
-	var listBottom = $('.ride-list').position().top + $('.ride-row-container').height() - 80;
+	var listTop = 0,
+		listBottom = 0;
+	if($('.ride-list').length){
+		listTop = $('.ride-list').position().top - 100;
+		listBottom = $('.ride-list').position().top + $('.ride-row-container').height() - 80;
+	}
 
 
 	// -----------------------------------------
@@ -135,8 +139,7 @@
 
 	// document ready
 	ride.init = function(){
-		
-
+	
 	};
 
 	ride.forms = function(){
