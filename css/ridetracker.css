@@ -207,7 +207,9 @@ legend{
 /* -----------------------------------
  * --list of rides
  * ----------------------------------- */
-
+.the-time-fields{
+	margin-top: 10px;
+}
 .title-bar{
 	position: relative;
 	z-index: 11;
@@ -327,11 +329,16 @@ legend{
 	.page-header{
 		position: relative;
 		height: auto;
+		-webkit-box-shadow: 0 4px 6px rgba(0,0,0,.8);
+		-moz-box-shadow: 0 4px 6px rgba(0,0,0,.8);
+		box-shadow: 0 4px 6px rgba(0,0,0,.8);
 	}
 	.main-content{
 		margin-top: 0;
 	}
-
+	.rides-headers {
+		top: 0;
+	}
 	.page-header .container > *{
 		float: none;
 	}
