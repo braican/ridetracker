@@ -39,8 +39,10 @@
 			<form action="util/add-ride.php" method="post" data-refresh="util/get-rides.php?route=<?php echo $route; ?>" id="add-ride-form">
 				<input type="date" name="ride_date" value="<?php echo date('Y-m-d'); ?>"></input>
 				
-				<input type="radio" value="0" id="ride_to" name="ride_to_from"><label for="ride_to">To</label>
-				<input type="radio" value="1" id="ride_from" name="ride_to_from"><label for="ride_from">From</label>
+				<span>
+					<input type="radio" value="0" id="ride_to" name="ride_to_from"><label for="ride_to">To</label>
+					<input type="radio" value="1" id="ride_from" name="ride_to_from"><label for="ride_from">From</label>
+				</span>
 				
 				<fieldset>
 					<legend>time</legend>
