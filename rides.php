@@ -63,12 +63,12 @@
 		<h2><div class="container">Graphics</div></h2>
 		<section class="the-charts container">
 			
-			<div>
+			<div id="to-canvas-container">
 				<h3>To</h3>
 				<canvas id="to-canvas" height="450" width="527"></canvas>
 			</div>
 
-			<div>
+			<div id="from-canvas-container">
 				<h3>From</h3>
 				<canvas id="from-canvas" height="450" width="527"></canvas>
 			</div>

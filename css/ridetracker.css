@@ -59,10 +59,13 @@ h1{
 	font-weight: bold;
 }
 h2{
-	font-size: 1.2em;
-	background: #12165a;
-	color: #fff;
-	padding: 10px;
+	font-size: 2em;
+	/*background: #12165a;*/
+	background: rgba(18, 22, 90, .2);
+	color: #000;
+	text-transform: uppercase;
+	font-weight: bold;
+	padding: 20px 0;
 }
 h3{
 	font-size: 1em;
@@ -203,6 +206,16 @@ legend{
  * --list of routes
  * ----------------------------------- */
 
+.route-list .route a{
+	display: block;
+	padding: 10px;
+	border-bottom: 1px solid #ccc;
+}
+.route-list .route a span{
+	color: #999;
+	float: right;
+	font-size: .8em;
+}
 
 /* -----------------------------------
  * --list of rides
@@ -309,7 +322,7 @@ legend{
 	padding: 40px 0;
 }
 .the-charts canvas{
-	/*width: 800px !important;*/
+	margin-top: 20px;
 }
 .the-charts > div h2{
 	margin-bottom: 20px;

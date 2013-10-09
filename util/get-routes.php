@@ -10,10 +10,11 @@
 	} else {
 		while($row = $result->fetch_assoc()){
 			$name = $row['route_name'];
-			$route_id = $row['route_id'];	 ?>
+			$route_id = $row['route_id'];
+			$miles = $row['route_length']; ?>
 
-			<div class="clearfix project">
-				<a href="rides.php?route=<?php echo $route_id ?>"><?php echo $name ?></a>
+			<div class="clearfix route">
+				<a href="rides.php?route=<?php echo $route_id ?>"><?php echo $name ?> <span><?php echo $miles; ?> miles</span></a>
 			</div>
 <?php
 		}
