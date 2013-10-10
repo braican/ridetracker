@@ -9,17 +9,13 @@
 (function(ride, undefined) {
 
 	// -----------------------------------------
-	// PUBLIC
-	//
-	// Properties
+	// PUBLIC Properties
 	//
 	ride.property = '';
 
 
 	// -----------------------------------------
-	// PRIVATE
-	//
-	// Properties
+	// PRIVATE Properties
 	//
 	var listTop = 0,
 		listBottom = 0;
@@ -30,9 +26,7 @@
 
 
 	// -----------------------------------------
-	// PRIVATE
-	//
-	// Methods
+	// PRIVATE  Methods
 	//
 
 	//
@@ -48,6 +42,11 @@
 		return results[1] || 0;
   	}
 
+  	//
+  	// getTheCharts
+  	//
+  	// get the graphs using chart.js
+  	//
   	function getTheCharts(){
   		var canvases = document.getElementsByTagName('canvas'),
   			ww = $('.the-charts').width();;
@@ -128,9 +127,7 @@
 
 
 	// -----------------------------------------
-	// PUBLIC
-	//
-	// Methods
+	// PUBLIC Methods
 	//
 
 	Array.min = function( array ){
