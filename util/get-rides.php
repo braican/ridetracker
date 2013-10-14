@@ -38,113 +38,62 @@
 			</div>
 <?php } ?>
 	</div>
-<?php
-	endif;
+<?php endif; ?>
 	
+<?php
 	// overall stats
-	$sql =	"SELECT count(*) FROM rides WHERE route_id = $route_id";
+	$sql = "SELECT count(ride_secs), MAX(ride_secs), MIN(ride_secs), AVG(ride_secs)
+			FROM rides WHERE route_id = $route_id";
 	if(!$result = $db->query($sql))
 		die('error with the database query - [' . $db->error . ']');
-	
-	$count = $result->fetch_row();
-
-	$sql =	"SELECT MAX(ride_secs) FROM rides WHERE route_id = $route_id";
-	if(!$result = $db->query($sql))
-		die('error with the database query - [' . $db->error . ']');
-	
-	$max = $result->fetch_row();
-
-	$sql =	"SELECT MIN(ride_secs) FROM rides WHERE route_id = $route_id";
-	if(!$result = $db->query($sql))
-		die('error with the database query - [' . $db->error . ']');
-
-	$min = $result->fetch_row();
-
-	$sql =	"SELECT AVG(ride_secs) FROM rides WHERE route_id = $route_id";
-	if(!$result = $db->query($sql))
-		die('error with the database query - [' . $db->error . ']');
-
-	$avg = $result->fetch_row();
-
-?>
+	$all = $result->fetch_assoc(); ?>
 	<div class="stats clearfix overall">
-		<h3>Overall (<?php echo $count[0]; ?> rides)</h3>
+		<h3>Overall (<?php echo $all['count(ride_secs)']; ?> rides)</h3>
 		<div class="the-stats">
-			<div><div>best time</div> <div><?php outputTime($min[0]); ?></div></div>
-			<div><div>worst time</div> <div><?php outputTime($max[0]); ?></div></div>
-			<div><div>average time</div> <div><?php outputTime($avg[0]); ?></div></div>
+			<div><div>best time</div> <div><?php outputTime($all['MIN(ride_secs)']); ?></div></div>
+			<div><div>worst time</div> <div><?php outputTime($all['MAX(ride_secs)']); ?></div></div>
+			<div><div>average time</div> <div><?php outputTime($all['AVG(ride_secs)']); ?></div></div>
 		</div>
 	</div>
+
+
 <?php
-
 	// to
-	$sql =	"SELECT count(*) FROM rides WHERE route_id = $route_id AND ride_to_from = 0";
-	if(!$result = $db->query($sql))
-		die('error with the database query - [' . $db->error . ']');
-	
-	$count = $result->fetch_row();
-
-	$sql =	"SELECT MAX(ride_secs) FROM rides WHERE route_id = $route_id AND ride_to_from = 0";
-	if(!$result = $db->query($sql))
-		die('error with the database query - [' . $db->error . ']');
-	
-	$max = $result->fetch_row();
-
-	$sql =	"SELECT MIN(ride_secs) FROM rides WHERE route_id = $route_id AND ride_to_from = 0";
+	$sql = "SELECT count(ride_secs), MIN(ride_secs), MAX(ride_secs), AVG(ride_secs)
+			FROM rides WHERE route_id = $route_id AND ride_to_from = 0";
 	if(!$result = $db->query($sql))
 		die('error with the database query - [' . $db->error . ']');
 
-	$min = $result->fetch_row();
-
-	$sql =	"SELECT AVG(ride_secs) FROM rides WHERE route_id = $route_id AND ride_to_from = 0";
-	if(!$result = $db->query($sql))
-		die('error with the database query - [' . $db->error . ']');
-
-	$avg = $result->fetch_row();
-?>
+	$all = $result->fetch_assoc(); ?>
 	<div class="stats clearfix to">
-		<h3>To (<?php echo $count[0]; ?> rides)</h3>
+		<h3>To (<?php echo $all['count(ride_secs)']; ?> rides)</h3>
 		<div class="the-stats">
-			<div><div>best time</div> <div><?php outputTime($min[0]); ?></div></div>
-			<div><div>worst time</div> <div><?php outputTime($max[0]); ?></div></div>
-			<div><div>average time</div> <div><?php outputTime($avg[0]); ?></div></div>
+			<div><div>best time</div> <div><?php outputTime($all['MIN(ride_secs)']); ?></div></div>
+			<div><div>worst time</div> <div><?php outputTime($all['MAX(ride_secs)']); ?></div></div>
+			<div><div>average time</div> <div><?php outputTime($all['AVG(ride_secs)']); ?></div></div>
 		</div>
 	</div>
+
+
 <?php
 	// from
-	$sql =	"SELECT count(*) FROM rides WHERE route_id = $route_id AND ride_to_from = 1";
-	if(!$result = $db->query($sql))
-		die('error with the database query - [' . $db->error . ']');
-	
-	$count = $result->fetch_row();
-
-	$sql =	"SELECT MAX(ride_secs) FROM rides WHERE route_id = $route_id AND ride_to_from = 1";
-	if(!$result = $db->query($sql))
-		die('error with the database query - [' . $db->error . ']');
-	
-	$max = $result->fetch_row();
-
-	$sql =	"SELECT MIN(ride_secs) FROM rides WHERE route_id = $route_id AND ride_to_from = 1";
+	$sql = "SELECT count(ride_secs), MIN(ride_secs), MAX(ride_secs), AVG(ride_secs)
+			FROM rides WHERE route_id = $route_id AND ride_to_from = 1";
 	if(!$result = $db->query($sql))
 		die('error with the database query - [' . $db->error . ']');
 
-	$min = $result->fetch_row();
-
-	$sql =	"SELECT AVG(ride_secs) FROM rides WHERE route_id = $route_id AND ride_to_from = 1";
-	if(!$result = $db->query($sql))
-		die('error with the database query - [' . $db->error . ']');
-
-	$avg = $result->fetch_row();
-?>
+	$all = $result->fetch_assoc(); ?>
 	<div class="stats clearfix from">
-		<h3>From (<?php echo $count[0]; ?> rides)</h3>
+		<h3>From (<?php echo $all['count(ride_secs)']; ?> rides)</h3>
 		<div class="the-stats">
-			<div><div>best time</div> <div><?php outputTime($min[0]); ?></div></div>
-			<div><div>worst time</div> <div><?php outputTime($max[0]); ?></div></div>
-			<div><div>average time</div> <div><?php outputTime($avg[0]); ?></div></div>
+			<div><div>best time</div> <div><?php outputTime($all['MIN(ride_secs)']); ?></div></div>
+			<div><div>worst time</div> <div><?php outputTime($all['MAX(ride_secs)']); ?></div></div>
+			<div><div>average time</div> <div><?php outputTime($all['AVG(ride_secs)']); ?></div></div>
 		</div>
 	</div>
-<?php 
+<?php
+
+
 function outputTime($post_secs){
 	$mins = str_pad(floor(($post_secs % 3600) / 60), 2, '0', STR_PAD_LEFT);
 	$hrs = str_pad(floor($post_secs / 3600), 2, '0', STR_PAD_LEFT);
